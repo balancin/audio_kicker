@@ -1,0 +1,472 @@
+// !$*UTF8*$!
+{
+	1D6058900D05DD3D006BFB54 /* audio_kicker */ = {
+		activeExec = 0;
+		executables = (
+			C2B8908C1007601200070C2B /* audio_kicker */,
+		);
+	};
+	28D7ACF60DDB3853001CB0EB /* audio_kickerViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1311, 582}}";
+			sepNavSelRange = "{209, 0}";
+			sepNavVisRange = "{0, 280}";
+		};
+	};
+	28D7ACF70DDB3853001CB0EB /* audio_kickerViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1311, 1120}}";
+			sepNavSelRange = "{2062, 0}";
+			sepNavVisRange = "{672, 1776}";
+		};
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = C2B8908C1007601200070C2B /* audio_kicker */;
+		activeTarget = 1D6058900D05DD3D006BFB54 /* audio_kicker */;
+		codeSenseManager = C2B8909D1007601500070C2B /* Code sense */;
+		executables = (
+			C2B8908C1007601200070C2B /* audio_kicker */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					1133,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXConfiguration.PBXTargetDataSource.PBXTargetDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					1093,
+					60,
+					20,
+					48.16259765625,
+					43,
+					43,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXTargetDataSource_PrimaryAttribute,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 268926895;
+			PBXWorkspaceStateSaveDate = 268926895;
+		};
+		perUserProjectItems = {
+			C2B890B310076B7100070C2B = C2B890B310076B7100070C2B /* PlistBookmark */;
+			C2B890B410076B7100070C2B = C2B890B410076B7100070C2B /* PBXTextBookmark */;
+			C2B890B510076B7100070C2B = C2B890B510076B7100070C2B /* PBXTextBookmark */;
+			C2B890B610076B7100070C2B = C2B890B610076B7100070C2B /* PBXTextBookmark */;
+			C2B890B710076B7100070C2B = C2B890B710076B7100070C2B /* PlistBookmark */;
+			C2B890B810076B7100070C2B = C2B890B810076B7100070C2B /* PBXTextBookmark */;
+			C2B890B910076B7100070C2B = C2B890B910076B7100070C2B /* PBXTextBookmark */;
+			C2B890BA10076B7100070C2B = C2B890BA10076B7100070C2B /* PBXTextBookmark */;
+			C2B890BB10076B8200070C2B = C2B890BB10076B8200070C2B /* PBXTextBookmark */;
+			C2B890BC10076B9B00070C2B = C2B890BC10076B9B00070C2B /* PBXTextBookmark */;
+			C2B890C61007747E00070C2B = C2B890C61007747E00070C2B /* PBXTextBookmark */;
+			C2B890C71007749C00070C2B = C2B890C71007749C00070C2B /* PBXTextBookmark */;
+			C2B890CB1007756600070C2B = C2B890CB1007756600070C2B /* PBXTextBookmark */;
+			C2B890CC1007756600070C2B = C2B890CC1007756600070C2B /* PBXTextBookmark */;
+			C2B890CE1007756600070C2B = C2B890CE1007756600070C2B /* PBXTextBookmark */;
+			C2B890CF1007756600070C2B = C2B890CF1007756600070C2B /* PBXTextBookmark */;
+			C2B890D01007756600070C2B = C2B890D01007756600070C2B /* PBXTextBookmark */;
+			C2B890D41007765800070C2B = C2B890D41007765800070C2B /* PBXTextBookmark */;
+			C2B890D71007765C00070C2B = C2B890D71007765C00070C2B /* PBXTextBookmark */;
+			C2B890DC1007770500070C2B = C2B890DC1007770500070C2B /* PBXTextBookmark */;
+			C2B890DD1007770500070C2B = C2B890DD1007770500070C2B /* PBXTextBookmark */;
+			C2B890DF1007770500070C2B = C2B890DF1007770500070C2B /* PBXTextBookmark */;
+			C2B890E01007770500070C2B = C2B890E01007770500070C2B /* PBXTextBookmark */;
+			C2B890E71007774400070C2B = C2B890E71007774400070C2B /* PBXTextBookmark */;
+			C2B890EA10077CC000070C2B = C2B890EA10077CC000070C2B /* PBXTextBookmark */;
+			C2B890EB10077CC000070C2B = C2B890EB10077CC000070C2B /* PBXTextBookmark */;
+			C2B890ED10077CC000070C2B = C2B890ED10077CC000070C2B /* PBXTextBookmark */;
+			C2B890EE10077CC000070C2B = C2B890EE10077CC000070C2B /* PBXTextBookmark */;
+			C2B890F010077CD100070C2B = C2B890F010077CD100070C2B /* PBXTextBookmark */;
+		};
+		sourceControlManager = C2B8909C1007601500070C2B /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	C2B8908C1007601200070C2B /* audio_kicker */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = audio_kicker;
+		savedGlobals = {
+		};
+		sourceDirectories = (
+		);
+	};
+	C2B8909C1007601500070C2B /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+		};
+	};
+	C2B8909D1007601500070C2B /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	C2B890B310076B7100070C2B /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* audio_kicker-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+			CFBundleInfoDictionaryVersion,
+		);
+		name = "/Users/fabiobalancin/Documents/iPhone/audio_kicker/audio_kicker-Info.plist";
+		rLen = 0;
+		rLoc = 2147483647;
+	};
+	C2B890B410076B7100070C2B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF60DDB3853001CB0EB /* audio_kickerViewController.h */;
+		name = "audio_kickerViewController.h: 10";
+		rLen = 0;
+		rLoc = 209;
+		rType = 0;
+		vrLen = 280;
+		vrLoc = 0;
+	};
+	C2B890B510076B7100070C2B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF70DDB3853001CB0EB /* audio_kickerViewController.m */;
+		name = "audio_kickerViewController.m: 33";
+		rLen = 0;
+		rLoc = 818;
+		rType = 0;
+		vrLen = 731;
+		vrLoc = 539;
+	};
+	C2B890B610076B7100070C2B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF70DDB3853001CB0EB /* audio_kickerViewController.m */;
+		name = "audio_kickerViewController.m: 35";
+		rLen = 0;
+		rLoc = 822;
+		rType = 0;
+		vrLen = 1159;
+		vrLoc = 539;
+	};
+	C2B890B710076B7100070C2B /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* audio_kicker-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+			CFBundleInfoDictionaryVersion,
+		);
+		name = "/Users/fabiobalancin/Documents/iPhone/audio_kicker/audio_kicker-Info.plist";
+		rLen = 0;
+		rLoc = 2147483647;
+	};
+	C2B890B810076B7100070C2B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF70DDB3853001CB0EB /* audio_kickerViewController.m */;
+		name = "audio_kickerViewController.m: 33";
+		rLen = 0;
+		rLoc = 818;
+		rType = 0;
+		vrLen = 731;
+		vrLoc = 539;
+	};
+	C2B890B910076B7100070C2B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF60DDB3853001CB0EB /* audio_kickerViewController.h */;
+		name = "audio_kickerViewController.h: 10";
+		rLen = 0;
+		rLoc = 209;
+		rType = 0;
+		vrLen = 280;
+		vrLoc = 0;
+	};
+	C2B890BA10076B7100070C2B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF70DDB3853001CB0EB /* audio_kickerViewController.m */;
+		name = "audio_kickerViewController.m: 33";
+		rLen = 0;
+		rLoc = 818;
+		rType = 0;
+		vrLen = 1120;
+		vrLoc = 539;
+	};
+	C2B890BB10076B8200070C2B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF70DDB3853001CB0EB /* audio_kickerViewController.m */;
+		name = "audio_kickerViewController.m: 32";
+		rLen = 0;
+		rLoc = 793;
+		rType = 0;
+		vrLen = 844;
+		vrLoc = 423;
+	};
+	C2B890BC10076B9B00070C2B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF70DDB3853001CB0EB /* audio_kickerViewController.m */;
+		name = "audio_kickerViewController.m: 32";
+		rLen = 0;
+		rLoc = 793;
+		rType = 0;
+		vrLen = 1331;
+		vrLoc = 234;
+	};
+	C2B890C61007747E00070C2B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF70DDB3853001CB0EB /* audio_kickerViewController.m */;
+		name = "audio_kickerViewController.m: 32";
+		rLen = 0;
+		rLoc = 793;
+		rType = 0;
+		vrLen = 1217;
+		vrLoc = 234;
+	};
+	C2B890C71007749C00070C2B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF70DDB3853001CB0EB /* audio_kickerViewController.m */;
+		name = "audio_kickerViewController.m: 32";
+		rLen = 0;
+		rLoc = 793;
+		rType = 0;
+		vrLen = 1124;
+		vrLoc = 233;
+	};
+	C2B890CB1007756600070C2B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF70DDB3853001CB0EB /* audio_kickerViewController.m */;
+		name = "audio_kickerViewController.m: 46";
+		rLen = 0;
+		rLoc = 2045;
+		rType = 0;
+		vrLen = 1079;
+		vrLoc = 772;
+	};
+	C2B890CC1007756600070C2B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C2B890CD1007756600070C2B /* asm __dyld__dyld_start  0x2fe01028 */;
+		rLen = 0;
+		rLoc = 2147483647;
+		rType = 0;
+	};
+	C2B890CD1007756600070C2B /* asm __dyld__dyld_start  0x2fe01028 */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = text;
+		path = "asm __dyld__dyld_start  0x2fe01028";
+		sourceTree = "<group>";
+	};
+	C2B890CE1007756600070C2B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF70DDB3853001CB0EB /* audio_kickerViewController.m */;
+		name = "audio_kickerViewController.m: 32";
+		rLen = 0;
+		rLoc = 793;
+		rType = 0;
+		vrLen = 844;
+		vrLoc = 423;
+	};
+	C2B890CF1007756600070C2B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF70DDB3853001CB0EB /* audio_kickerViewController.m */;
+		name = "audio_kickerViewController.m: 46";
+		rLen = 0;
+		rLoc = 2045;
+		rType = 0;
+		vrLen = 1079;
+		vrLoc = 772;
+	};
+	C2B890D01007756600070C2B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C2B890D11007756600070C2B /* asm __dyld__dyld_start  0x2fe01028 */;
+		name = "asm __dyld__dyld_start  0x2fe01028: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 587;
+		vrLoc = 0;
+	};
+	C2B890D11007756600070C2B /* asm __dyld__dyld_start  0x2fe01028 */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = text;
+		path = "asm __dyld__dyld_start  0x2fe01028";
+		sourceTree = "<group>";
+	};
+	C2B890D41007765800070C2B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF70DDB3853001CB0EB /* audio_kickerViewController.m */;
+		name = "audio_kickerViewController.m: 46";
+		rLen = 0;
+		rLoc = 1468;
+		rType = 0;
+		vrLen = 1710;
+		vrLoc = 653;
+	};
+	C2B890D71007765C00070C2B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF70DDB3853001CB0EB /* audio_kickerViewController.m */;
+		name = "audio_kickerViewController.m: 46";
+		rLen = 0;
+		rLoc = 1468;
+		rType = 0;
+		vrLen = 1710;
+		vrLoc = 653;
+	};
+	C2B890DC1007770500070C2B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF70DDB3853001CB0EB /* audio_kickerViewController.m */;
+		name = "audio_kickerViewController.m: 48";
+		rLen = 0;
+		rLoc = 1576;
+		rType = 0;
+		vrLen = 1089;
+		vrLoc = 942;
+	};
+	C2B890DD1007770500070C2B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C2B890DE1007770500070C2B /* asm __dyld__dyld_start  0x2fe01028 */;
+		rLen = 0;
+		rLoc = 2147483647;
+		rType = 0;
+	};
+	C2B890DE1007770500070C2B /* asm __dyld__dyld_start  0x2fe01028 */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = text;
+		path = "asm __dyld__dyld_start  0x2fe01028";
+		sourceTree = "<group>";
+	};
+	C2B890DF1007770500070C2B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF70DDB3853001CB0EB /* audio_kickerViewController.m */;
+		name = "audio_kickerViewController.m: 48";
+		rLen = 0;
+		rLoc = 1576;
+		rType = 0;
+		vrLen = 1089;
+		vrLoc = 942;
+	};
+	C2B890E01007770500070C2B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C2B890E11007770500070C2B /* asm __dyld__dyld_start  0x2fe01028 */;
+		name = "asm __dyld__dyld_start  0x2fe01028: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 587;
+		vrLoc = 0;
+	};
+	C2B890E11007770500070C2B /* asm __dyld__dyld_start  0x2fe01028 */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = text;
+		path = "asm __dyld__dyld_start  0x2fe01028";
+		sourceTree = "<group>";
+	};
+	C2B890E71007774400070C2B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF70DDB3853001CB0EB /* audio_kickerViewController.m */;
+		name = "audio_kickerViewController.m: 54";
+		rLen = 0;
+		rLoc = 2022;
+		rType = 0;
+		vrLen = 1791;
+		vrLoc = 565;
+	};
+	C2B890EA10077CC000070C2B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF70DDB3853001CB0EB /* audio_kickerViewController.m */;
+		name = "audio_kickerViewController.m: 59";
+		rLen = 0;
+		rLoc = 2062;
+		rType = 0;
+		vrLen = 887;
+		vrLoc = 1469;
+	};
+	C2B890EB10077CC000070C2B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C2B890EC10077CC000070C2B /* asm __dyld__dyld_start  0x2fe01028 */;
+		rLen = 0;
+		rLoc = 2147483647;
+		rType = 0;
+	};
+	C2B890EC10077CC000070C2B /* asm __dyld__dyld_start  0x2fe01028 */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = text;
+		path = "asm __dyld__dyld_start  0x2fe01028";
+		sourceTree = "<group>";
+	};
+	C2B890ED10077CC000070C2B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF70DDB3853001CB0EB /* audio_kickerViewController.m */;
+		name = "audio_kickerViewController.m: 59";
+		rLen = 0;
+		rLoc = 2062;
+		rType = 0;
+		vrLen = 887;
+		vrLoc = 1469;
+	};
+	C2B890EE10077CC000070C2B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = C2B890EF10077CC000070C2B /* asm __dyld__dyld_start  0x2fe01028 */;
+		name = "asm __dyld__dyld_start  0x2fe01028: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 587;
+		vrLoc = 0;
+	};
+	C2B890EF10077CC000070C2B /* asm __dyld__dyld_start  0x2fe01028 */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = text;
+		path = "asm __dyld__dyld_start  0x2fe01028";
+		sourceTree = "<group>";
+	};
+	C2B890F010077CD100070C2B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF70DDB3853001CB0EB /* audio_kickerViewController.m */;
+		name = "audio_kickerViewController.m: 59";
+		rLen = 0;
+		rLoc = 2062;
+		rType = 0;
+		vrLen = 1720;
+		vrLoc = 674;
+	};
+}
