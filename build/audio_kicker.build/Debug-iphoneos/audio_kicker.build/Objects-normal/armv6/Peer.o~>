@@ -1,0 +1,35 @@
+/Users/fabiobalancin/Documents/iPhone/audio_kicker/Classes/Peer.m: In function '-[Peer startPeer]':
+/Users/fabiobalancin/Documents/iPhone/audio_kicker/Classes/Peer.m:18: error: '_session' undeclared (first use in this function)
+/Users/fabiobalancin/Documents/iPhone/audio_kicker/Classes/Peer.m:18: error: (Each undeclared identifier is reported only once
+/Users/fabiobalancin/Documents/iPhone/audio_kicker/Classes/Peer.m:18: error: for each function it appears in.)
+/Users/fabiobalancin/Documents/iPhone/audio_kicker/Classes/Peer.m:19: error: 'GKSession' undeclared (first use in this function)
+/Users/fabiobalancin/Documents/iPhone/audio_kicker/Classes/Peer.m:19: error: 'BLUETOOTHSESSION' undeclared (first use in this function)
+/Users/fabiobalancin/Documents/iPhone/audio_kicker/Classes/Peer.m:21: error: 'GKSessionModePeer' undeclared (first use in this function)
+/Users/fabiobalancin/Documents/iPhone/audio_kicker/Classes/Peer.m: In function '-[Peer stopPeer]':
+/Users/fabiobalancin/Documents/iPhone/audio_kicker/Classes/Peer.m:34: error: '_session' undeclared (first use in this function)
+/Users/fabiobalancin/Documents/iPhone/audio_kicker/Classes/Peer.m:37: warning: 'Peer' may not respond to '-cleanupProgressWindow'
+/Users/fabiobalancin/Documents/iPhone/audio_kicker/Classes/Peer.m:37: warning: (Messages without a matching method signature
+/Users/fabiobalancin/Documents/iPhone/audio_kicker/Classes/Peer.m:37: warning: will be assumed to return 'id' and accept
+/Users/fabiobalancin/Documents/iPhone/audio_kicker/Classes/Peer.m:37: warning: '...' as arguments.)
+/Users/fabiobalancin/Documents/iPhone/audio_kicker/Classes/Peer.m: In function '-[Peer loadPeerList]':
+/Users/fabiobalancin/Documents/iPhone/audio_kicker/Classes/Peer.m:42: error: request for member 'peerList' in something not a structure or union
+/Users/fabiobalancin/Documents/iPhone/audio_kicker/Classes/Peer.m:42: error: '_session' undeclared (first use in this function)
+/Users/fabiobalancin/Documents/iPhone/audio_kicker/Classes/Peer.m:42: error: 'GKPeerStateAvailable' undeclared (first use in this function)
+/Users/fabiobalancin/Documents/iPhone/audio_kicker/Classes/Peer.m: At top level:
+/Users/fabiobalancin/Documents/iPhone/audio_kicker/Classes/Peer.m:46: error: expected ')' before 'GKSession'
+/Users/fabiobalancin/Documents/iPhone/audio_kicker/Classes/Peer.m:46: error: expected ')' before 'GKPeerConnectionState'
+/Users/fabiobalancin/Documents/iPhone/audio_kicker/Classes/Peer.m: In function '-[Peer session:peer:didChangeState:]':
+/Users/fabiobalancin/Documents/iPhone/audio_kicker/Classes/Peer.m:50: error: switch quantity not an integer
+/Users/fabiobalancin/Documents/iPhone/audio_kicker/Classes/Peer.m:54: error: 'GKPeerStateAvailable' undeclared (first use in this function)
+/Users/fabiobalancin/Documents/iPhone/audio_kicker/Classes/Peer.m:55: error: '_peerList' undeclared (first use in this function)
+/Users/fabiobalancin/Documents/iPhone/audio_kicker/Classes/Peer.m:63: error: 'GKPeerStateUnavailable' undeclared (first use in this function)
+/Users/fabiobalancin/Documents/iPhone/audio_kicker/Classes/Peer.m:73: error: 'GKPeerStateConnected' undeclared (first use in this function)
+/Users/fabiobalancin/Documents/iPhone/audio_kicker/Classes/Peer.m:77: error: 'GKPeerStateDisconnected' undeclared (first use in this function)
+/Users/fabiobalancin/Documents/iPhone/audio_kicker/Classes/Peer.m:79: error: '_isWriter' undeclared (first use in this function)
+/Users/fabiobalancin/Documents/iPhone/audio_kicker/Classes/Peer.m:80: error: '_isConnected' undeclared (first use in this function)
+/Users/fabiobalancin/Documents/iPhone/audio_kicker/Classes/Peer.m:81: error: '_deviceToSend' undeclared (first use in this function)
+/Users/fabiobalancin/Documents/iPhone/audio_kicker/Classes/Peer.m:82: warning: 'Peer' may not respond to '-cleanupProgressWindow'
+/Users/fabiobalancin/Documents/iPhone/audio_kicker/Classes/Peer.m:85: error: request for member 'dataRead' in something not a structure or union
+/Users/fabiobalancin/Documents/iPhone/audio_kicker/Classes/Peer.m:94: warning: implicit declaration of function 'CALLDELEGATE'
+/Users/fabiobalancin/Documents/iPhone/audio_kicker/Classes/Peer.m:94: error: '_peerListDelegate' undeclared (first use in this function)
+/Users/fabiobalancin/Documents/iPhone/audio_kicker/Classes/Peer.m:94: error: 'peerListChanged' undeclared (first use in this function)

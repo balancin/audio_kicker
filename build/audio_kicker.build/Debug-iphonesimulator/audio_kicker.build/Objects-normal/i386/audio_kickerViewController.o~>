@@ -1,0 +1,8 @@
+/Users/fabiobalancin/Documents/iPhone/audio_kicker/Classes/audio_kickerViewController.m: In function '-[audio_kickerViewController sendData:]':
+/Users/fabiobalancin/Documents/iPhone/audio_kicker/Classes/audio_kickerViewController.m:181: warning: unused variable 'songRating'
+/Users/fabiobalancin/Documents/iPhone/audio_kicker/Classes/audio_kickerViewController.m:180: warning: unused variable 'songGenre'
+/Users/fabiobalancin/Documents/iPhone/audio_kicker/Classes/audio_kickerViewController.m:178: warning: unused variable 'songLastPlayedDate'
+/Users/fabiobalancin/Documents/iPhone/audio_kicker/Classes/audio_kickerViewController.m:177: warning: unused variable 'songSkipCount'
+/Users/fabiobalancin/Documents/iPhone/audio_kicker/Classes/audio_kickerViewController.m:176: warning: unused variable 'songPlayCount'
+/Users/fabiobalancin/Documents/iPhone/audio_kicker/Classes/audio_kickerViewController.m:175: warning: unused variable 'songArtist'
+/Users/fabiobalancin/Documents/iPhone/audio_kicker/Classes/audio_kickerViewController.m:174: warning: unused variable 'songTitle'
