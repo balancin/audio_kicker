@@ -101,21 +101,15 @@
 									 [song valueForProperty: MPMediaItemPropertyGenre], @"songArtist", 
 									 [song valueForProperty: MPMediaItemPropertyAlbumArtist], @"songGenre", 
 									 [song valueForProperty: MPMediaItemPropertyRating], @"songRating", 
-									 nil];
+									 nil]; 
 				
-				//dataRep = [NSPropertyListSerialization dataFromPropertyList: musicPropertyList 
-//																	 format: NSPropertyListXMLFormat_v1_0 
-//														   errorDescription: &errorStr];
-//				
-//				[mSession sendData:dataRep toPeers:mPeers withDataMode:GKSendDataReliable error:nil];
-//				
-				[musics addObject:musicPropertyList];
-				
-				//musicPropertyList = nil;
+				[musics addObject:musicPropertyList]; 
 				
 			}
 			
 		}
+		
+		
 	}
 	
 	NSMutableDictionary* user = [[NSMutableDictionary alloc] init];
@@ -190,56 +184,94 @@
 	[[delegate tableView] reloadData];
 	
 	
-	
 }
 
 -(void) sendData {
 	
-	NSDictionary *musicPropertyList; 
-	MPMediaQuery *myPlaylistsQuery = [MPMediaQuery playlistsQuery];
-	NSArray *playlists = [myPlaylistsQuery collections];
+	//NSDictionary *musicPropertyList; 
+	//NSMutableArray* musics = [[NSMutableArray alloc] init];
+	//MPMediaQuery *myPlaylistsQuery = [MPMediaQuery playlistsQuery];
+	//NSArray *playlists = [myPlaylistsQuery collections];
 	NSData* dataRep;
 	NSString *errorStr = nil; 
 	
-	for (MPMediaPlaylist *playlist in playlists) {
-		NSLog (@"%@", [playlist valueForProperty: MPMediaPlaylistPropertyName]);
+	//for (MPMediaPlaylist *playlist in playlists) {
+//		NSLog (@"%@", [playlist valueForProperty: MPMediaPlaylistPropertyName]);
+//		
+//		NSArray *songs = [playlist items];
+//		for (MPMediaItem *song in songs) { 
+//			
+//			NSNumber* songMediaType = [song valueForProperty: MPMediaItemPropertyMediaType]; 
+//			
+//			//verifica se é uma música
+//			if([songMediaType intValue] == 1) {
+//				
+//				musicPropertyList = [NSDictionary dictionaryWithObjectsAndKeys: 
+//									 [song valueForProperty: MPMediaItemPropertyTitle], @"songTitle", 
+//									 [song valueForProperty: MPMediaItemPropertyAlbumArtist], @"songArtist", 
+//									 [song valueForProperty: MPMediaItemPropertyPlayCount], @"songPlayCount", 
+//									 [song valueForProperty: MPMediaItemPropertyAlbumArtist], @"songArtist", 
+//									 [song valueForProperty: MPMediaItemPropertySkipCount], @"songSkipCount", 
+//									 [song valueForProperty: MPMediaItemPropertyLastPlayedDate], @"songLastPlayedDate", 
+//									 [song valueForProperty: MPMediaItemPropertyGenre], @"songArtist", 
+//									 [song valueForProperty: MPMediaItemPropertyAlbumArtist], @"songGenre", 
+//									 [song valueForProperty: MPMediaItemPropertyRating], @"songRating", 
+//									 nil]; 
+//				
+//				[musics addObject:musicPropertyList]; 
+//				
+//			}
+//			
+//		}
+//	}
+//	
+	NSMutableDictionary* props = [[NSMutableDictionary alloc] init];
+	[props setValue:[[NSNumber alloc] initWithInt:[[[library objectAtIndex:0] objectForKey:@"library"] count]] forKey:@"FriendTotalMusics"];
+	
+	dataRep = [NSPropertyListSerialization dataFromPropertyList: props 
+														 format: NSPropertyListXMLFormat_v1_0 
+											   errorDescription: &errorStr];
+	[mSession sendData:dataRep toPeers:mPeers withDataMode:GKSendDataReliable error:nil];
+	
+	//Em loop separado para poder controlar quantidade
+//	for (int i=0; i < [musics count]; i++) {
+//		
+//		dataRep = [NSPropertyListSerialization dataFromPropertyList: [musics objectAtIndex:i] 
+//															 format: NSPropertyListXMLFormat_v1_0 
+//												   errorDescription: &errorStr];
+//		
+//		NSLog(@"Enviando musica");
+//		[mSession sendData:dataRep toPeers:mPeers withDataMode:GKSendDataReliable error:nil];
+//		
+//	}
+	
+}
+
+- (void) syncronize:(id)sender {
 		
-		NSArray *songs = [playlist items];
-		for (MPMediaItem *song in songs) { 
-			
-			NSNumber* songMediaType = [song valueForProperty: MPMediaItemPropertyMediaType]; 
-			
-			//verifica se é uma música
-			if([songMediaType intValue] == 1) {
-				
-				musicPropertyList = [NSDictionary dictionaryWithObjectsAndKeys: 
-									 [song valueForProperty: MPMediaItemPropertyTitle], @"songTitle", 
-									 [song valueForProperty: MPMediaItemPropertyAlbumArtist], @"songArtist", 
-									 [song valueForProperty: MPMediaItemPropertyPlayCount], @"songPlayCount", 
-									 [song valueForProperty: MPMediaItemPropertyAlbumArtist], @"songArtist", 
-									 [song valueForProperty: MPMediaItemPropertySkipCount], @"songSkipCount", 
-									 [song valueForProperty: MPMediaItemPropertyLastPlayedDate], @"songLastPlayedDate", 
-									 [song valueForProperty: MPMediaItemPropertyGenre], @"songArtist", 
-									 [song valueForProperty: MPMediaItemPropertyAlbumArtist], @"songGenre", 
-									 [song valueForProperty: MPMediaItemPropertyRating], @"songRating", 
-									 nil];
-				
-				NSLog(@"%@ %@", musicPropertyList, [song valueForProperty: MPMediaItemPropertyAlbumArtist]);
-				
-				dataRep = [NSPropertyListSerialization dataFromPropertyList: musicPropertyList 
-																					 format: NSPropertyListXMLFormat_v1_0 
-																		   errorDescription: &errorStr];
-								
-				[mSession sendData:dataRep toPeers:mPeers withDataMode:GKSendDataReliable error:nil];
-								
-				musicPropertyList = nil;
-				
-				break;
-				
-			}
-			
-		}
-	}	
+	totalFriendMusicsTemp = totalFriendMusicsTemp-1;
+	
+	//Requisita a musica ao amigo
+	NSMutableDictionary* props = [[NSMutableDictionary alloc] init];
+	[props setValue:[[NSNumber alloc] initWithInt:totalFriendMusicsTemp] forKey:@"giveMeTune"];
+	
+	NSData* dataRep;
+	NSString *errorStr = nil; 
+	dataRep = [NSPropertyListSerialization dataFromPropertyList: props 
+														 format: NSPropertyListXMLFormat_v1_0 
+											   errorDescription: &errorStr];
+	[mSession sendData:dataRep toPeers:mPeers withDataMode:GKSendDataReliable error:nil];
+	
+	NSLog(@"teste %i", totalFriendMusicsTemp);
+
+	//verifica se acabaram as musicas do amigo
+	if(totalFriendMusicsTemp == 0){
+		[syncTimer invalidate];
+		syncTimer = nil;
+		
+		if(!sentMusicComplete)
+			[self sendData];
+	}
 	
 }
 
@@ -251,32 +283,112 @@
 											format:nil
 											errorDescription:&errorStr];
 	
-	if([[array objectForKey:@"songArtist"] length] > 0){
+	if([array objectForKey:@"FriendTotalMusics"]){
+	
+		totalFriendMusics = totalFriendMusicsTemp = [[array objectForKey:@"FriendTotalMusics"] intValue];
+		NSLog(@"O amigo tem %i musicas", [[array objectForKey:@"FriendTotalMusics"] intValue]);
+		syncTimer = [NSTimer scheduledTimerWithTimeInterval:.009 target:self selector:@selector(syncronize:) userInfo:nil repeats:YES];
 		
+	}
+	
+	if([array objectForKey:@"giveMeTune"]){
+		
+		NSLog(@"giveMeTune %i", [[array objectForKey:@"giveMeTune"] intValue]);
+		
+		NSData* dataRep;
+		NSString *errorStr = nil; 
+		dataRep = [NSPropertyListSerialization dataFromPropertyList: [[[library objectAtIndex:0] objectForKey:@"library"] objectAtIndex:[[array objectForKey:@"giveMeTune"] intValue]] 
+															 format: NSPropertyListXMLFormat_v1_0 
+												   errorDescription: &errorStr];
+		[mSession sendData:dataRep toPeers:mPeers withDataMode:GKSendDataReliable error:nil];
+		
+		if([[array objectForKey:@"giveMeTune"] intValue] == 0)
+			sentMusicComplete = true;
+		
+	}
+	
+//	NSLog(@"titulo... %@", [array objectForKey:@"songTitle"]);
+	if([array objectForKey:@"songTitle"]){
+		
+		
+		NSMutableArray* user;
+		NSMutableArray* musics;
+
 		for(int i = 0; i < [library count]; i++){
 		
 			if([[[[library objectAtIndex:i] objectForKey:@"user"] objectForKey:@"user"] isEqualToString:mSession.displayName]){
 			
-				if([[[library objectAtIndex:i] objectForKey:@"user"] objectForKey:@"library"] != nil)
-					[[[library objectAtIndex:i] objectForKey:@"user"] setValue:[[NSMutableArray alloc] init] forKey:@"library"];
+				NSLog(@"Recebendo musica");
+				user = [library objectAtIndex:i];
 				
-				[[[[library objectAtIndex:i] objectForKey:@"user"] objectForKey:@"library"] addObject:array];
+				if([[user objectForKey:@"library"] count] > 0 && i == 0){
+					[user setValue:[[NSMutableArray alloc] init] forKey:@"library"];
+					NSLog(@"Reiniciando musica usuario... %i", [[user objectForKey:@"library"] count]);
+				}
+				
+				musics = [user objectForKey:@"library"];//[[NSMutableArray alloc] init];
 				
 			}
 			
 		}
 		
+		[musics addObject:array];
 		[[delegate tableView] reloadData];
 		
 	}
+//		
+//		//NSLog(@"LIBRARY: \n %@", library);
+//		
+//		
+//		NSMutableArray* user;
+//		NSMutableArray* musics;
+//		
+//		for(int i = 0; i < [library count]; i++){
+//		
+//			if([[[[library objectAtIndex:i] objectForKey:@"user"] objectForKey:@"user"] isEqualToString:mSession.displayName]){
+//			
+//				NSLog(@"Recebendo musica");
+//				user = [library objectAtIndex:i];
+//				
+//				if([[user objectForKey:@"library"] count] > 0 && i == 0){
+//					[user setValue:[[NSMutableArray alloc] init] forKey:@"library"];
+//					NSLog(@"Reiniciando musica usuario... %i", [[user objectForKey:@"library"] count]);
+//				}
+//				
+//				musics = [user objectForKey:@"library"];//[[NSMutableArray alloc] init];
+//				
+//			}
+//			
+//		}
+//		
+//		
+//		if(totalFriendMusics != [musics count]){
+//		
+//			[musics addObject:array];
+//			
+//			totalFriendMusicsTemp = totalFriendMusicsTemp-1;
+//			NSLog(@"Falta... %i \n A ultima: %@", totalFriendMusicsTemp, [[musics lastObject] objectForKey:@"songTitle"]);
+//			
+//			if(totalFriendMusicsTemp == 0){
+//				NSLog(@"- Enviando dados");
+//				[self sendData];
+//				
+//			}
+//			
+//		} else {
+//		
+//			NSLog(@"Ja foi sincronizado !!");
+//			
+//		}
+//		[[delegate tableView] reloadData];
+		
+//	}
 	
-	NSLog(@"%@ %i", array, [[array objectForKey:@"songArtist"] length]);
-	
-	NSString* aStr = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-	//NSLog(@"Received Data from %@ %@",peer, aStr);
-	
-	UIAlertView* myAlert = [[[UIAlertView alloc] initWithTitle:@"Add User" message:[NSString stringWithFormat:@"Received Data from %@ %@",peer, aStr] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK",nil] autorelease];
-	[myAlert show];
+	//NSString* aStr = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+//	//NSLog(@"Received Data from %@ %@",peer, aStr);
+//	
+//	UIAlertView* myAlert = [[[UIAlertView alloc] initWithTitle:@"Add User" message:[NSString stringWithFormat:@"Received Data from %@ %@",peer, aStr] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK",nil] autorelease];
+//	[myAlert show];
 	
 	
 }

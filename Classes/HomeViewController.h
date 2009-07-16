@@ -19,6 +19,10 @@
 	NSMutableArray *mPeers;
 	UITableView* table;
 	UsersTableViewDelegate* delegate;
+	int totalFriendMusics;
+	int totalFriendMusicsTemp;
+	NSTimer* syncTimer;
+	BOOL sentMusicComplete;
 	
 }
 
@@ -26,6 +30,7 @@
 -(void)addUserLibrary;
 -(void)sendData;
 -(void)receiveData;
+- (void) syncronize:(id)sender;
 
 @property(nonatomic, retain) GKSession* mSession;
 

@@ -19,6 +19,7 @@
 		C2B890A010076ACC00070C2B /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2B8909F10076ACC00070C2B /* MediaPlayer.framework */; };
 		C2C12175100CFAA900C7BAAE /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2C12174100CFAA900C7BAAE /* HomeViewController.m */; };
 		C2C121BC100D000B00C7BAAE /* UsersTableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C2C121BB100D000B00C7BAAE /* UsersTableViewDelegate.m */; };
+		C2C18E37100F9BF60079AFF8 /* MusicTableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C2C18E36100F9BF60079AFF8 /* MusicTableViewDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,8 @@
 		C2C12174100CFAA900C7BAAE /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		C2C121BA100D000B00C7BAAE /* UsersTableViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UsersTableViewDelegate.h; sourceTree = "<group>"; };
 		C2C121BB100D000B00C7BAAE /* UsersTableViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UsersTableViewDelegate.m; sourceTree = "<group>"; };
+		C2C18E35100F9BF60079AFF8 /* MusicTableViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicTableViewDelegate.h; sourceTree = "<group>"; };
+		C2C18E36100F9BF60079AFF8 /* MusicTableViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicTableViewDelegate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +140,8 @@
 			children = (
 				C2C121BA100D000B00C7BAAE /* UsersTableViewDelegate.h */,
 				C2C121BB100D000B00C7BAAE /* UsersTableViewDelegate.m */,
+				C2C18E35100F9BF60079AFF8 /* MusicTableViewDelegate.h */,
+				C2C18E36100F9BF60079AFF8 /* MusicTableViewDelegate.m */,
 			);
 			name = Delegates;
 			sourceTree = "<group>";
@@ -200,6 +205,7 @@
 				28D7ACF80DDB3853001CB0EB /* audio_kickerViewController.m in Sources */,
 				C2C12175100CFAA900C7BAAE /* HomeViewController.m in Sources */,
 				C2C121BC100D000B00C7BAAE /* UsersTableViewDelegate.m in Sources */,
+				C2C18E37100F9BF60079AFF8 /* MusicTableViewDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
