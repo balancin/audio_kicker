@@ -46,6 +46,7 @@
 	
 	delegate = [[UsersTableViewDelegate alloc] initWithStyle:UITableViewCellStyleSubtitle];
 	[delegate setTableView:table];
+	[delegate setNavegador:self.navigationController];
 	[delegate setUsers:library];
 	
 	self.navigationController.navigationBar.tintColor = [UIColor blackColor]; 
@@ -92,14 +93,12 @@
 			if([songMediaType intValue] == 1) {
 				
 				musicPropertyList = [NSDictionary dictionaryWithObjectsAndKeys: 
-									 [song valueForProperty: MPMediaItemPropertyMediaType], @"songTitle", 
+									 [song valueForProperty: MPMediaItemPropertyTitle], @"songTitle", 
 									 [song valueForProperty: MPMediaItemPropertyAlbumArtist], @"songArtist", 
 									 [song valueForProperty: MPMediaItemPropertyPlayCount], @"songPlayCount", 
-									 [song valueForProperty: MPMediaItemPropertyAlbumArtist], @"songArtist", 
 									 [song valueForProperty: MPMediaItemPropertySkipCount], @"songSkipCount", 
-									 [song valueForProperty: MPMediaItemPropertyLastPlayedDate], @"songLastPlayedDate", 
-									 [song valueForProperty: MPMediaItemPropertyGenre], @"songArtist", 
-									 [song valueForProperty: MPMediaItemPropertyAlbumArtist], @"songGenre", 
+									 [song valueForProperty: MPMediaItemPropertyLastPlayedDate], @"songLastPlayedDate",  
+									 [song valueForProperty: MPMediaItemPropertyGenre], @"songGenre", 
 									 [song valueForProperty: MPMediaItemPropertyRating], @"songRating", 
 									 nil]; 
 				
@@ -161,6 +160,7 @@
 	
 	// Use a retaining property to take ownership of the session.
     self.mSession = session;
+	
 	// Assumes our object will also become the session's delegate.
     session.delegate = self;
     [session setDataReceiveHandler: self withContext:nil];
@@ -180,6 +180,8 @@
 	[library addObject:user];
 	
 	[delegate setUsers:library];
+	[delegate setSession:mSession];
+	[delegate setPeers:mPeers];
 	
 	[[delegate tableView] reloadData];
 	
@@ -304,6 +306,36 @@
 		
 		if([[array objectForKey:@"giveMeTune"] intValue] == 0)
 			sentMusicComplete = true;
+		
+	}
+	
+	if([array objectForKey:@"playTune"]){
+		
+		NSLog(@"%i", [[array objectForKey:@"playTune"] intValue]);
+		
+		MPMusicPlayerController* musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
+		
+		MPMediaPropertyPredicate *artistNamePredicate = [MPMediaPropertyPredicate predicateWithValue: 
+														 [[[[library objectAtIndex:0] objectForKey:@"library"] objectAtIndex:[[array objectForKey:@"playTune"] intValue]] objectForKey:@"songArtist"]
+																						 forProperty: MPMediaItemPropertyArtist];
+		
+		MPMediaPropertyPredicate *titlePredicate = [MPMediaPropertyPredicate predicateWithValue: 
+													[[[[library objectAtIndex:0] objectForKey:@"library"] objectAtIndex:[[array objectForKey:@"playTune"] intValue]] objectForKey:@"songTitle"]
+																					forProperty: MPMediaItemPropertyTitle];
+		
+		MPMediaQuery *myComplexQuery = [[MPMediaQuery alloc] init];
+		[myComplexQuery addFilterPredicate: artistNamePredicate];
+		[myComplexQuery addFilterPredicate: titlePredicate];
+		
+		[musicPlayer setQueueWithQuery:myComplexQuery];
+		
+		MPMusicPlaybackState playbackState = [musicPlayer playbackState];
+		
+		if (playbackState == MPMusicPlaybackStateStopped || playbackState == MPMusicPlaybackStatePaused) {
+			[musicPlayer play];
+		} else if (playbackState == MPMusicPlaybackStatePlaying) {
+			[musicPlayer pause];
+		}
 		
 	}
 	

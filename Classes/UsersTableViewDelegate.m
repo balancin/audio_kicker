@@ -10,7 +10,7 @@
 
 @implementation UsersTableViewDelegate
 
-@synthesize users;
+@synthesize users, navegador, session, peers;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -52,7 +52,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
-	NSLog(@"AH");
+	MusicasViewController* viewController = [[MusicasViewController alloc] init];
+	[viewController setMusics:[[users objectAtIndex:indexPath.row] objectForKey:@"library"]];
+	[viewController setNavegador:navegador];
+	[viewController setSession:session];
+	[viewController setPeers:peers];
+	[navegador pushViewController:viewController animated:YES];
 	
 }
 

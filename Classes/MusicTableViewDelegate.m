@@ -11,6 +11,8 @@
 
 @implementation MusicTableViewDelegate
 
+@synthesize navegador, musics, session, peers;
+
 /*
 - (id)initWithStyle:(UITableViewStyle)style {
     // Override initWithStyle: if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -80,7 +82,7 @@
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    return [musics count];
 }
 
 
@@ -91,20 +93,66 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
-    
+	
+	cell.imageView.image = [UIImage imageNamed:@"play_button.png"];
+	cell.accessoryType = UITableViewCellAccessoryCheckmark;
+	cell.textLabel.text = [[musics objectAtIndex:indexPath.row] objectForKey:@"songTitle"];
+    cell.detailTextLabel.text = [[musics objectAtIndex:indexPath.row] objectForKey:@"songArtist"];
+	
     // Set up the cell...
 	
     return cell;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+	return 90;
+	
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Navigation logic may go here. Create and push another view controller.
 	// AnotherViewController *anotherViewController = [[AnotherViewController alloc] initWithNibName:@"AnotherView" bundle:nil];
 	// [self.navigationController pushViewController:anotherViewController];
 	// [anotherViewController release];
+	
+	musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
+		
+	MPMediaPropertyPredicate *artistNamePredicate = [MPMediaPropertyPredicate predicateWithValue: 
+													 [[musics objectAtIndex:indexPath.row] objectForKey:@"songArtist"]
+	                                  forProperty: MPMediaItemPropertyArtist];
+	
+	MPMediaPropertyPredicate *titlePredicate = [MPMediaPropertyPredicate predicateWithValue: 
+												[[musics objectAtIndex:indexPath.row] objectForKey:@"songTitle"]
+                                     forProperty: MPMediaItemPropertyTitle];
+	
+	MPMediaQuery *myComplexQuery = [[MPMediaQuery alloc] init];
+	[myComplexQuery addFilterPredicate: artistNamePredicate];
+	[myComplexQuery addFilterPredicate: titlePredicate];
+	
+	[musicPlayer setQueueWithQuery:myComplexQuery];
+	
+	MPMusicPlaybackState playbackState = [musicPlayer playbackState];
+	
+	if (playbackState == MPMusicPlaybackStateStopped || playbackState == MPMusicPlaybackStatePaused) {
+		[musicPlayer play];
+	} else if (playbackState == MPMusicPlaybackStatePlaying) {
+		[musicPlayer pause];
+	}
+	
+	NSMutableDictionary* music = [[NSMutableDictionary alloc] init];
+	[music setValue:[[NSNumber alloc] initWithInt:indexPath.row] forKey:@"playTune"];
+	
+	NSData* dataRep;
+	NSString *errorStr = nil; 
+	dataRep = [NSPropertyListSerialization dataFromPropertyList: music 
+														 format: NSPropertyListXMLFormat_v1_0 
+											   errorDescription: &errorStr];
+	
+	[session sendData:dataRep toPeers:peers withDataMode:GKSendDataReliable error:nil];
+	
 }
 
 

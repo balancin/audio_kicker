@@ -1,5 +1,5 @@
 //
-//  MusicTableViewDelegate.h
+//  MusicasViewController.h
 //  audio_kicker
 //
 //  Created by Fabio Balancin on 7/16/09.
@@ -7,15 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <MediaPlayer/MediaPlayer.h>
+#import "MusicTableViewDelegate.h"
 #import <GameKit/GameKit.h>
 
-@interface MusicTableViewDelegate : UITableViewController <UITableViewDelegate, UITextViewDelegate, UIWebViewDelegate> {
+@interface MusicasViewController : UIViewController {
 
+	MusicTableViewDelegate* delegate;
 	NSMutableArray* musics;
 	GKSession* session;
 	UINavigationController* navegador;
-	MPMusicPlayerController	*musicPlayer;
 	NSArray* peers;
 	
 }
