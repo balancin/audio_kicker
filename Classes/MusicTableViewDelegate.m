@@ -11,7 +11,7 @@
 
 @implementation MusicTableViewDelegate
 
-@synthesize navegador, musics, session, peers;
+@synthesize navegador, musics, session, peers, friendMusic;
 
 /*
 - (id)initWithStyle:(UITableViewStyle)style {
@@ -118,40 +118,46 @@
 	// [self.navigationController pushViewController:anotherViewController];
 	// [anotherViewController release];
 	
-	musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
+	if(!friendMusic){
 		
-	MPMediaPropertyPredicate *artistNamePredicate = [MPMediaPropertyPredicate predicateWithValue: 
-													 [[musics objectAtIndex:indexPath.row] objectForKey:@"songArtist"]
-	                                  forProperty: MPMediaItemPropertyArtist];
+		musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
+			
+		MPMediaPropertyPredicate *artistNamePredicate = [MPMediaPropertyPredicate predicateWithValue: 
+														 [[musics objectAtIndex:indexPath.row] objectForKey:@"songArtist"]
+										  forProperty: MPMediaItemPropertyArtist];
+		
+		MPMediaPropertyPredicate *titlePredicate = [MPMediaPropertyPredicate predicateWithValue: 
+													[[musics objectAtIndex:indexPath.row] objectForKey:@"songTitle"]
+										 forProperty: MPMediaItemPropertyTitle];
+		
+		MPMediaQuery *myComplexQuery = [[MPMediaQuery alloc] init];
+		[myComplexQuery addFilterPredicate: artistNamePredicate];
+		[myComplexQuery addFilterPredicate: titlePredicate];
+		
+		[musicPlayer setQueueWithQuery:myComplexQuery];
+		
+		MPMusicPlaybackState playbackState = [musicPlayer playbackState];
+		
+		if (playbackState == MPMusicPlaybackStateStopped || playbackState == MPMusicPlaybackStatePaused) {
+			[musicPlayer play];
+		} else if (playbackState == MPMusicPlaybackStatePlaying) {
+			[musicPlayer pause];
+		}
+		
+	} else {
 	
-	MPMediaPropertyPredicate *titlePredicate = [MPMediaPropertyPredicate predicateWithValue: 
-												[[musics objectAtIndex:indexPath.row] objectForKey:@"songTitle"]
-                                     forProperty: MPMediaItemPropertyTitle];
-	
-	MPMediaQuery *myComplexQuery = [[MPMediaQuery alloc] init];
-	[myComplexQuery addFilterPredicate: artistNamePredicate];
-	[myComplexQuery addFilterPredicate: titlePredicate];
-	
-	[musicPlayer setQueueWithQuery:myComplexQuery];
-	
-	MPMusicPlaybackState playbackState = [musicPlayer playbackState];
-	
-	if (playbackState == MPMusicPlaybackStateStopped || playbackState == MPMusicPlaybackStatePaused) {
-		[musicPlayer play];
-	} else if (playbackState == MPMusicPlaybackStatePlaying) {
-		[musicPlayer pause];
+		NSMutableDictionary* music = [[NSMutableDictionary alloc] init];
+		[music setValue:[[musics objectAtIndex:indexPath.row] objectForKey:@"index"] forKey:@"playTune"];
+		
+		NSData* dataRep;
+		NSString *errorStr = nil; 
+		dataRep = [NSPropertyListSerialization dataFromPropertyList: music 
+															 format: NSPropertyListXMLFormat_v1_0 
+												   errorDescription: &errorStr];
+		
+		[session sendData:dataRep toPeers:peers withDataMode:GKSendDataReliable error:nil];
+			
 	}
-	
-	NSMutableDictionary* music = [[NSMutableDictionary alloc] init];
-	[music setValue:[[NSNumber alloc] initWithInt:indexPath.row] forKey:@"playTune"];
-	
-	NSData* dataRep;
-	NSString *errorStr = nil; 
-	dataRep = [NSPropertyListSerialization dataFromPropertyList: music 
-														 format: NSPropertyListXMLFormat_v1_0 
-											   errorDescription: &errorStr];
-	
-	[session sendData:dataRep toPeers:peers withDataMode:GKSendDataReliable error:nil];
 	
 }
 

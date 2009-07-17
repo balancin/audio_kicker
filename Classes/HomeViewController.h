@@ -17,6 +17,7 @@
 	GKPeerPickerController *mPicker;
 	GKSession *mSession;
 	NSMutableArray *mPeers;
+	NSString* mPeerID;
 	UITableView* table;
 	UsersTableViewDelegate* delegate;
 	int totalFriendMusics;
@@ -31,6 +32,7 @@
 -(void)sendData;
 -(void)receiveData;
 - (void) syncronize:(id)sender;
+-(void)makeCommonSongs;
 
 @property(nonatomic, retain) GKSession* mSession;
 

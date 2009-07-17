@@ -57,6 +57,10 @@
 	[viewController setNavegador:navegador];
 	[viewController setSession:session];
 	[viewController setPeers:peers];
+	
+	if(indexPath.row == 1)
+		[viewController setFriendMusic:YES];
+		
 	[navegador pushViewController:viewController animated:YES];
 	
 }

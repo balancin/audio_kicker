@@ -11,7 +11,7 @@
 
 @implementation MusicasViewController
 
-@synthesize musics, navegador, session, peers;
+@synthesize musics, navegador, session, peers, friendMusic;
 
 /*
 - (id)initWithStyle:(UITableViewStyle)style {
@@ -33,7 +33,7 @@
 	[delegate setMusics:musics];
 	[delegate setSession:session];
 	[delegate setPeers:peers];
-	
+	[delegate setFriendMusic:friendMusic];
 	//self.navigationController.navigationBar.tintColor = [UIColor blackColor]; 
 	
 	[self.view addSubview:delegate.view];

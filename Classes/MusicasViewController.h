@@ -17,6 +17,7 @@
 	GKSession* session;
 	UINavigationController* navegador;
 	NSArray* peers;
+	BOOL friendMusic;
 	
 }
 
@@ -24,5 +25,6 @@
 @property(nonatomic, retain) NSMutableArray* musics;
 @property(nonatomic, retain) UINavigationController* navegador;
 @property(nonatomic, retain) NSArray* peers;
+@property(nonatomic, readwrite) BOOL friendMusic;
 
 @end

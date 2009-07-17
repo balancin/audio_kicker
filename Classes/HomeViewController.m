@@ -81,6 +81,8 @@
 	MPMediaQuery *myPlaylistsQuery = [MPMediaQuery playlistsQuery];
 	NSArray *playlists = [myPlaylistsQuery collections];
 	
+	int indexMusic = 0;
+	
 	for (MPMediaPlaylist *playlist in playlists) {
 		NSLog (@"%@", [playlist valueForProperty: MPMediaPlaylistPropertyName]);
 		
@@ -100,9 +102,11 @@
 									 [song valueForProperty: MPMediaItemPropertyLastPlayedDate], @"songLastPlayedDate",  
 									 [song valueForProperty: MPMediaItemPropertyGenre], @"songGenre", 
 									 [song valueForProperty: MPMediaItemPropertyRating], @"songRating", 
+									 [[NSNumber alloc] initWithInt:indexMusic], @"index", 
 									 nil]; 
 				
 				[musics addObject:musicPropertyList]; 
+				indexMusic++;
 				
 			}
 			
@@ -114,6 +118,48 @@
 	NSMutableDictionary* user = [[NSMutableDictionary alloc] init];
 	[user setValue:userProperties forKey:@"user"];
 	[user setValue:musics forKey:@"library"];
+	
+	[library addObject:user];
+	
+}
+
+-(void)makeCommonSongs {
+	
+	NSMutableArray* lib = [[NSMutableArray alloc] init];
+	
+	if([library count] > 1){
+		for(int i=0; i < [library count]-1; i++){
+			
+			for(int j=0; j < [[[library objectAtIndex:0] objectForKey:@"library"] count]; j++){
+				
+				for(int y=0; y < [[[library objectAtIndex:i+1] objectForKey:@"library"] count]; y++){
+					
+					if([[[[[library objectAtIndex:0] objectForKey:@"library"] objectAtIndex:j] objectForKey:@"songTitle"] 
+						isEqualToString:[[[[library objectAtIndex:i+1] objectForKey:@"library"] objectAtIndex:y] objectForKey:@"songTitle"]] && 
+					   [[[[[library objectAtIndex:0] objectForKey:@"library"] objectAtIndex:j] objectForKey:@"songArtist"] 
+						isEqualToString:[[[[library objectAtIndex:i+1] objectForKey:@"library"] objectAtIndex:y] objectForKey:@"songArtist"]]){
+						
+						//NSLog(@"%i %i %i %@-%@* bate!", i, j, y, [[[[library objectAtIndex:0] objectForKey:@"library"] objectAtIndex:j] objectForKey:@"songTitle"], [[[[library objectAtIndex:i+1] objectForKey:@"library"] objectAtIndex:y] objectForKey:@"songTitle"]);
+						
+						[lib addObject:[[[library objectAtIndex:0] objectForKey:@"library"] objectAtIndex:j]];
+						break;
+					} else {
+						
+						//NSLog(@"- %i %i %i %@-%@", i, j, y, [[[[library objectAtIndex:0] objectForKey:@"library"] objectAtIndex:j] objectForKey:@"songTitle"], [[[[library objectAtIndex:i+1] objectForKey:@"library"] objectAtIndex:y] objectForKey:@"songTitle"]);
+						
+					}
+					
+				}
+			}
+		}
+	}
+	
+	NSMutableDictionary* userProperties = [[NSMutableDictionary alloc] init];
+	[userProperties setValue:@"Common Songs" forKey:@"user"];
+	
+	NSMutableDictionary* user = [[NSMutableDictionary alloc] init];
+	[user setValue:userProperties forKey:@"user"];
+	[user setValue:lib forKey:@"library"];
 	
 	[library addObject:user];
 	
@@ -153,10 +199,12 @@
  */
 - (void)peerPickerController:(GKPeerPickerController *)picker didConnectPeer:(NSString *)peerID toSession:(GKSession *)session{
 	
-	NSLog(@"Connected from %@",peerID);
-	session.delegate = self;
+	//NSLog(@"Connected from %@",peerID);
 	
-	[session sendData:[@"lalalala" dataUsingEncoding: NSASCIIStringEncoding] toPeers:mPeers withDataMode:GKSendDataReliable error:nil];
+	[self.navigationController.navigationBar.topItem.rightBarButtonItem setEnabled:NO];
+	
+	session.delegate = self;
+	mPeerID = peerID;
 	
 	// Use a retaining property to take ownership of the session.
     self.mSession = session;
@@ -170,7 +218,7 @@
     [picker autorelease];
 	
 	NSMutableDictionary* userProperties = [[NSMutableDictionary alloc] init];
-	[userProperties setValue:[session displayName] forKey:@"user"];
+	[userProperties setValue:[session displayNameForPeer:mPeerID] forKey:@"user"];
 	NSMutableDictionary* user = [[NSMutableDictionary alloc] init];
 	NSMutableArray* musics = [[NSMutableArray alloc] init];
 
@@ -197,36 +245,8 @@
 	NSData* dataRep;
 	NSString *errorStr = nil; 
 	
-	//for (MPMediaPlaylist *playlist in playlists) {
-//		NSLog (@"%@", [playlist valueForProperty: MPMediaPlaylistPropertyName]);
-//		
-//		NSArray *songs = [playlist items];
-//		for (MPMediaItem *song in songs) { 
-//			
-//			NSNumber* songMediaType = [song valueForProperty: MPMediaItemPropertyMediaType]; 
-//			
-//			//verifica se é uma música
-//			if([songMediaType intValue] == 1) {
-//				
-//				musicPropertyList = [NSDictionary dictionaryWithObjectsAndKeys: 
-//									 [song valueForProperty: MPMediaItemPropertyTitle], @"songTitle", 
-//									 [song valueForProperty: MPMediaItemPropertyAlbumArtist], @"songArtist", 
-//									 [song valueForProperty: MPMediaItemPropertyPlayCount], @"songPlayCount", 
-//									 [song valueForProperty: MPMediaItemPropertyAlbumArtist], @"songArtist", 
-//									 [song valueForProperty: MPMediaItemPropertySkipCount], @"songSkipCount", 
-//									 [song valueForProperty: MPMediaItemPropertyLastPlayedDate], @"songLastPlayedDate", 
-//									 [song valueForProperty: MPMediaItemPropertyGenre], @"songArtist", 
-//									 [song valueForProperty: MPMediaItemPropertyAlbumArtist], @"songGenre", 
-//									 [song valueForProperty: MPMediaItemPropertyRating], @"songRating", 
-//									 nil]; 
-//				
-//				[musics addObject:musicPropertyList]; 
-//				
-//			}
-//			
-//		}
-//	}
-//	
+	[self.navigationController.navigationBar.topItem.leftBarButtonItem setEnabled:NO];
+	
 	NSMutableDictionary* props = [[NSMutableDictionary alloc] init];
 	[props setValue:[[NSNumber alloc] initWithInt:[[[library objectAtIndex:0] objectForKey:@"library"] count]] forKey:@"FriendTotalMusics"];
 	
@@ -235,17 +255,6 @@
 											   errorDescription: &errorStr];
 	[mSession sendData:dataRep toPeers:mPeers withDataMode:GKSendDataReliable error:nil];
 	
-	//Em loop separado para poder controlar quantidade
-//	for (int i=0; i < [musics count]; i++) {
-//		
-//		dataRep = [NSPropertyListSerialization dataFromPropertyList: [musics objectAtIndex:i] 
-//															 format: NSPropertyListXMLFormat_v1_0 
-//												   errorDescription: &errorStr];
-//		
-//		NSLog(@"Enviando musica");
-//		[mSession sendData:dataRep toPeers:mPeers withDataMode:GKSendDataReliable error:nil];
-//		
-//	}
 	
 }
 
@@ -264,7 +273,7 @@
 											   errorDescription: &errorStr];
 	[mSession sendData:dataRep toPeers:mPeers withDataMode:GKSendDataReliable error:nil];
 	
-	NSLog(@"teste %i", totalFriendMusicsTemp);
+	//NSLog(@"pedindo %i", totalFriendMusicsTemp);
 
 	//verifica se acabaram as musicas do amigo
 	if(totalFriendMusicsTemp == 0){
@@ -288,14 +297,14 @@
 	if([array objectForKey:@"FriendTotalMusics"]){
 	
 		totalFriendMusics = totalFriendMusicsTemp = [[array objectForKey:@"FriendTotalMusics"] intValue];
-		NSLog(@"O amigo tem %i musicas", [[array objectForKey:@"FriendTotalMusics"] intValue]);
-		syncTimer = [NSTimer scheduledTimerWithTimeInterval:.009 target:self selector:@selector(syncronize:) userInfo:nil repeats:YES];
+		//NSLog(@"O amigo tem %i musicas", [[array objectForKey:@"FriendTotalMusics"] intValue]);
+		syncTimer = [NSTimer scheduledTimerWithTimeInterval:.1 target:self selector:@selector(syncronize:) userInfo:nil repeats:YES];
 		
 	}
 	
 	if([array objectForKey:@"giveMeTune"]){
 		
-		NSLog(@"giveMeTune %i", [[array objectForKey:@"giveMeTune"] intValue]);
+		//NSLog(@"giveMeTune %i", [[array objectForKey:@"giveMeTune"] intValue]);
 		
 		NSData* dataRep;
 		NSString *errorStr = nil; 
@@ -311,7 +320,7 @@
 	
 	if([array objectForKey:@"playTune"]){
 		
-		NSLog(@"%i", [[array objectForKey:@"playTune"] intValue]);
+		//NSLog(@"%i", [[array objectForKey:@"playTune"] intValue]);
 		
 		MPMusicPlayerController* musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
 		
@@ -348,14 +357,21 @@
 
 		for(int i = 0; i < [library count]; i++){
 		
-			if([[[[library objectAtIndex:i] objectForKey:@"user"] objectForKey:@"user"] isEqualToString:mSession.displayName]){
+			if([[[[library objectAtIndex:i] objectForKey:@"user"] objectForKey:@"user"] isEqualToString:[mSession displayNameForPeer:mPeerID]]){
 			
-				NSLog(@"Recebendo musica");
+				//NSLog(@"Recebendo...");
 				user = [library objectAtIndex:i];
 				
 				if([[user objectForKey:@"library"] count] > 0 && i == 0){
 					[user setValue:[[NSMutableArray alloc] init] forKey:@"library"];
-					NSLog(@"Reiniciando musica usuario... %i", [[user objectForKey:@"library"] count]);
+					//NSLog(@"Reiniciando musica usuario... %i", [[user objectForKey:@"library"] count]);
+				}
+				
+				//NSLog(@"%i %i", [[user objectForKey:@"library"] count], totalFriendMusics-1);
+				if([[user objectForKey:@"library"] count] == totalFriendMusics-1){
+					
+					[self makeCommonSongs];
+					
 				}
 				
 				musics = [user objectForKey:@"library"];//[[NSMutableArray alloc] init];
